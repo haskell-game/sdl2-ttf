@@ -25,7 +25,7 @@ foreign import ccall unsafe "TTF_OpenFont"
   openFont :: CString -> CInt -> IO TTFFont
 
 foreign import ccall unsafe "TTF_OpenFontRW"
-  openFontRW :: Ptr RWops -> CInt -> IO TTFFont
+  openFontRW :: Ptr RWops -> CInt -> CInt -> IO TTFFont
 
 foreign import ccall unsafe "TTF_OpenFontIndexRW"
   openFontIndexRW :: Ptr RWops -> CInt -> CInt -> CLong -> IO TTFFont
@@ -34,7 +34,7 @@ foreign import ccall unsafe "TTF_CloseFont"
   closeFont :: TTFFont -> IO ()
  
 foreign import ccall unsafe "TTF_OpenFontIndex"
-  openFontIndex :: CString -> CInt -> CInt -> IO TTFFont
+  openFontIndex :: CString -> CInt -> CLong -> IO TTFFont
 
 foreign import ccall unsafe "TTF_GetFontStyle"
   getFontStyle :: TTFFont -> IO CInt
