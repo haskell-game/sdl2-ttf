@@ -73,12 +73,15 @@ module SDL.Raw.Font
   , renderText_Solid
   , renderText_Shaded
   , renderText_Blended
+  , renderText_Blended_Wrapped
   , renderUTF8_Solid
   , renderUTF8_Shaded
   , renderUTF8_Blended
+  , renderUTF8_Blended_Wrapped
   , renderUNICODE_Solid
   , renderUNICODE_Shaded
   , renderUNICODE_Blended
+  , renderUNICODE_Blended_Wrapped
   , renderGlyph_Solid
   , renderGlyph_Shaded
   , renderGlyph_Blended
@@ -92,7 +95,7 @@ module SDL.Raw.Font
 #include "SDL_ttf.h"
 
 import Foreign.C.String       (CString)
-import Foreign.C.Types        (CInt(..), CLong(..), CUShort(..))
+import Foreign.C.Types        (CInt(..), CLong(..), CUShort(..), CUInt(..))
 import Foreign.Ptr            (Ptr)
 import Prelude         hiding (init)
 import SDL.Raw.Types          (Version, Surface, RWops, Color)
@@ -255,3 +258,12 @@ liftF "renderUNICODE_Blended" "TTF_RenderUNICODE_Blended_p"
 
 liftF "renderGlyph_Blended" "TTF_RenderGlyph_Blended_p"
   [t|Ptr Font -> CUShort -> Ptr Color -> IO (Ptr Surface)|]
+
+liftF "renderText_Blended_Wrapped" "TTF_RenderText_Blended__Wrapped_p"
+  [t|Ptr Font -> CString -> Ptr Color -> CUInt -> IO (Ptr Surface)|]
+
+liftF "renderUTF8_Blended_Wrapped" "TTF_RenderUTF8_Blended_Wrapped_p"
+  [t|Ptr Font -> CString -> Ptr Color -> CUInt -> IO (Ptr Surface)|]
+
+liftF "renderUNICODE_Blended_Wrapped" "TTF_RenderUNICODE_Blended_Wrapped_p"
+  [t|Ptr Font -> Ptr CUShort -> Ptr Color -> CUInt -> IO (Ptr Surface)|]

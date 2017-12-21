@@ -81,6 +81,7 @@ module SDL.Font
   , solidGlyph
   , shadedGlyph
   , blendedGlyph
+  , blendedWrapped
   ) where
 
 import Control.Exception      (throwIO)
@@ -501,3 +502,14 @@ blendedGlyph (Font font) (V4 r g b a) ch =
       liftIO .
         with (SDL.Raw.Color r g b a) $ \fg ->
           SDL.Raw.Font.renderGlyph_Blended font (fromChar ch) fg
+
+-- | Same as 'blended', but renders across multiple lines. 
+--   Text is wrapped to multiple lines on line endings and on word boundaries
+--   if it extends beyond wrapLength in pixels.
+blendedWrapped :: MonadIO m => Font -> Color -> Int -> Text -> m SDL.Surface
+blendedWrapped (Font font) (V4 r g b a) wrapLength text =
+  fmap unmanaged .
+    throwIfNull "SDL.Font.blended" "TTF_RenderUNICODE_Blended_Wrapped" .
+      liftIO . withText text $ \ptr ->
+        with (SDL.Raw.Color r g b a) $ \fg ->
+          SDL.Raw.Font.renderUNICODE_Blended_Wrapped font (castPtr ptr) fg $ fromIntegral wrapLength
