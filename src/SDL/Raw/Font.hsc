@@ -63,6 +63,7 @@ module SDL.Raw.Font
   , fontFaceStyleName
   , glyphIsProvided
   , glyphMetrics
+  , getFontKerningSize
 
   -- * Getting text size
   , sizeText
@@ -267,3 +268,6 @@ liftF "renderUTF8_Blended_Wrapped" "TTF_RenderUTF8_Blended_Wrapped_p"
 
 liftF "renderUNICODE_Blended_Wrapped" "TTF_RenderUNICODE_Blended_Wrapped_p"
   [t|Ptr Font -> Ptr CUShort -> Ptr Color -> CUInt -> IO (Ptr Surface)|]
+
+liftF "getFontKerningSize" "TTF_GetFontKerningSize"
+  [t|Ptr Font -> CInt -> CInt -> IO CInt|]

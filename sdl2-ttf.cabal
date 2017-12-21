@@ -34,7 +34,7 @@ library
 
   pkgconfig-depends:
     sdl2 >= 2.0.3,
-    SDL2_ttf >= 2.0.0
+    SDL2_ttf >= 2.0.12
 
   c-sources:
     cbits/helpers.c

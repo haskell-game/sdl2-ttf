@@ -71,6 +71,7 @@ module SDL.Font
   , ascent
   , descent
   , lineSkip
+  , getKerningSize
 
   -- * Glyphs
   --
@@ -513,3 +514,8 @@ blendedWrapped (Font font) (V4 r g b a) wrapLength text =
       liftIO . withText text $ \ptr ->
         with (SDL.Raw.Color r g b a) $ \fg ->
           SDL.Raw.Font.renderUNICODE_Blended_Wrapped font (castPtr ptr) fg $ fromIntegral wrapLength
+
+-- | From a given 'Font' get the kerning size of two glyphs.
+getKerningSize :: MonadIO m => Font -> Index -> Index -> m Int
+getKerningSize (Font font) prevIndex index =
+  fmap fromIntegral $ SDL.Raw.Font.getFontKerningSize font (fromIntegral prevIndex) (fromIntegral index)
