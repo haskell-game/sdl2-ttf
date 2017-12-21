@@ -117,3 +117,33 @@ extern DECLSPEC SDL_Surface * SDLCALL
 
   return TTF_RenderGlyph_Blended(font, glyph, *fg);
 }
+
+extern DECLSPEC SDL_Surface * SDLCALL
+  TTF_RenderUTF8_Blended_Wrapped_p(
+    TTF_Font *font,
+    const char *text,
+    SDL_Color *fg,
+    uint32_t wrapLength) {
+
+  return TTF_RenderUTF8_Blended(font, text, *fg, wrapLength);
+}
+
+extern DECLSPEC SDL_Surface * SDLCALL
+  TTF_RenderUNICODE_Blended_Wrapped_p(
+    TTF_Font *font,
+    uint16_t *text,
+    SDL_Color *fg,
+    uint32_t wrapLength) {
+
+  return TTF_RenderUNICODE_Blended(font, text, *fg, wrapLength);
+}
+
+extern DECLSPEC SDL_Surface * SDLCALL
+  TTF_RenderText_Blended_Wrapped_p(
+    TTF_Font *font,
+    const char *text,
+    SDL_Color *fg,
+    uint32_t wrapLength) {
+
+  return TTF_RenderText_Blended(font, text, *fg, wrapLength);
+}
