@@ -259,7 +259,7 @@ liftF "renderUNICODE_Blended" "TTF_RenderUNICODE_Blended_p"
 liftF "renderGlyph_Blended" "TTF_RenderGlyph_Blended_p"
   [t|Ptr Font -> CUShort -> Ptr Color -> IO (Ptr Surface)|]
 
-liftF "renderText_Blended_Wrapped" "TTF_RenderText_Blended__Wrapped_p"
+liftF "renderText_Blended_Wrapped" "TTF_RenderText_Blended_Wrapped_p"
   [t|Ptr Font -> CString -> Ptr Color -> CUInt -> IO (Ptr Surface)|]
 
 liftF "renderUTF8_Blended_Wrapped" "TTF_RenderUTF8_Blended_Wrapped_p"

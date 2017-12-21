@@ -125,7 +125,7 @@ extern DECLSPEC SDL_Surface * SDLCALL
     SDL_Color *fg,
     uint32_t wrapLength) {
 
-  return TTF_RenderUTF8_Blended(font, text, *fg, wrapLength);
+  return TTF_RenderUTF8_Blended_Wrapped(font, text, *fg, wrapLength);
 }
 
 extern DECLSPEC SDL_Surface * SDLCALL
@@ -135,7 +135,7 @@ extern DECLSPEC SDL_Surface * SDLCALL
     SDL_Color *fg,
     uint32_t wrapLength) {
 
-  return TTF_RenderUNICODE_Blended(font, text, *fg, wrapLength);
+  return TTF_RenderUNICODE_Blended_Wrapped(font, text, *fg, wrapLength);
 }
 
 extern DECLSPEC SDL_Surface * SDLCALL
@@ -145,5 +145,5 @@ extern DECLSPEC SDL_Surface * SDLCALL
     SDL_Color *fg,
     uint32_t wrapLength) {
 
-  return TTF_RenderText_Blended(font, text, *fg, wrapLength);
+  return TTF_RenderText_Blended_Wrapped(font, text, *fg, wrapLength);
 }
