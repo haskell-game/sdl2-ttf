@@ -20,6 +20,11 @@ source-repository head
   type:     git
   location: https://github.com/haskell-game/sdl2-ttf
 
+flag pkgconfig
+  description: Use pkgconfig to find SDL2_ttf
+  manual:      True
+  default:     True
+
 library
   ghc-options: -Wall
 
@@ -33,9 +38,10 @@ library
   hs-source-dirs:
     src
 
-  pkgconfig-depends:
-    sdl2 >= 2.0.3,
-    SDL2_ttf >= 2.0.12
+  if flag(pkgconfig)
+    pkgconfig-depends: sdl2 >= 2.0.3, SDL2_ttf >= 2.0.12
+  else
+    extra-libraries: SDL2_ttf
 
   c-sources:
     cbits/helpers.c
